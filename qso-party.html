@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FSARC – Delaware QSO Party</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: {
+                50: '#e6eaf1', 100: '#c0c9db', 200: '#8fa0bc', 300: '#5e779d',
+                400: '#385886', 500: '#0f1f3d', 600: '#0d1b35', 700: '#0a152b',
+                800: '#071020', 900: '#040a14',
+              },
+              electric: {
+                50: '#eff4ff', 100: '#dbe6fe', 200: '#bfd3fe', 300: '#93b4fd',
+                400: '#6090fa', 500: '#2563eb', 600: '#1d4ed8', 700: '#1e40af',
+                800: '#1e3a8a', 900: '#1e2d6d',
+              },
+              surface: { light: '#f8fafc', white: '#ffffff' },
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --navy: #0f1f3d; --navy-light: #162a52; --navy-dark: #0a152b;
+        --electric: #2563eb; --electric-hover: #1d4ed8; --electric-light: #3b82f6;
+        --white: #ffffff; --surface: #f8fafc;
+        --text-primary: #0f172a; --text-secondary: #475569; --text-muted: #94a3b8;
+        --border: #e2e8f0;
+        --shadow-sm: 0 1px 3px rgba(15,31,61,0.08);
+        --shadow-md: 0 4px 16px rgba(15,31,61,0.1);
+        --shadow-lg: 0 8px 32px rgba(15,31,61,0.12);
+        --shadow-card: 0 2px 8px rgba(15,31,61,0.06);
+        --radius: 12px; --radius-lg: 16px;
+      }
+      * { margin:0; padding:0; box-sizing:border-box; }
+      html { scroll-behavior:smooth; scroll-padding-top:80px; }
+      body { font-family:'Inter',system-ui,-apple-system,sans-serif; color:var(--text-primary); line-height:1.6; -webkit-font-smoothing:antialiased; }
+
+      .header-scrolled { box-shadow:0 2px 20px rgba(15,31,61,0.3) !important; backdrop-filter:blur(12px); }
+
+      @keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+      .section-animate { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease,transform 0.7s ease; }
+      .section-animate.visible { opacity:1; transform:translateY(0); }
+
+      .card-hover { transition:transform 0.3s ease,box-shadow 0.3s ease; }
+      .card-hover:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+
+      .btn-primary {
+        background:var(--electric); color:var(--white); padding:14px 32px;
+        border-radius:10px; font-weight:600; font-size:0.95rem; border:none;
+        cursor:pointer; transition:all 0.25s ease; display:inline-flex;
+        align-items:center; gap:8px; text-decoration:none;
+      }
+      .btn-primary:hover { background:var(--electric-hover); transform:translateY(-2px); box-shadow:0 6px 20px rgba(37,99,235,0.35); }
+
+      .btn-ghost {
+        background:transparent; color:var(--white); padding:14px 32px;
+        border-radius:10px; font-weight:600; font-size:0.95rem;
+        border:2px solid rgba(255,255,255,0.4); cursor:pointer;
+        transition:all 0.25s ease; display:inline-flex; align-items:center;
+        gap:8px; text-decoration:none;
+      }
+      .btn-ghost:hover { border-color:var(--white); background:rgba(255,255,255,0.1); transform:translateY(-2px); }
+
+      .nav-link {
+        position:relative; color:rgba(255,255,255,0.75); transition:color 0.25s ease;
+        text-decoration:none; font-size:0.875rem; font-weight:500; padding:6px 0;
+      }
+      .nav-link::after {
+        content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px;
+        background:var(--electric); transition:width 0.3s ease; border-radius:1px;
+      }
+      .nav-link:hover, .nav-link.active { color:var(--white); }
+      .nav-link.active::after, .nav-link:hover::after { width:100%; }
+
+      .section-padding { padding:48px 0; }
+      @media(min-width:768px) { .section-padding { padding:80px 0; } }
+
+      .mobile-menu-enter { animation:slideDown 0.3s ease forwards; }
+      @keyframes slideDown { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
+
+      /* Hero gradient */
+      .qso-hero {
+        background: linear-gradient(135deg, #071020 0%, #0f1f3d 50%, #162a52 100%);
+        position: relative; overflow: hidden;
+      }
+      .qso-hero::before {
+        content: ''; position: absolute; inset: 0;
+        background: radial-gradient(ellipse at 70% 50%, rgba(37,99,235,0.15) 0%, transparent 70%);
+      }
+
+      /* Contest badge */
+      .contest-badge {
+        display:inline-flex; align-items:center; gap:8px;
+        background:linear-gradient(135deg,var(--electric),var(--electric-light));
+        color:white; padding:8px 20px; border-radius:40px;
+        font-weight:700; font-size:0.9rem; letter-spacing:1px;
+        box-shadow:0 4px 16px rgba(37,99,235,0.35);
+      }
+
+      /* Result year cards */
+      .year-card {
+        background:white; border:1px solid var(--border); border-radius:12px;
+        padding:16px; text-align:center; transition:all 0.25s ease;
+        text-decoration:none; display:block;
+      }
+      .year-card:hover {
+        border-color:var(--electric); background:linear-gradient(135deg,rgba(37,99,235,0.03),rgba(37,99,235,0.08));
+        transform:translateY(-3px); box-shadow:0 6px 20px rgba(37,99,235,0.12);
+      }
+      .year-card .year-num { font-size:1.25rem; font-weight:800; color:var(--navy); }
+      .year-card .year-label { font-size:0.75rem; color:var(--text-muted); font-weight:500; margin-top:2px; }
+      .year-card.current-year { border-color:var(--electric); border-width:2px; background:linear-gradient(135deg,rgba(37,99,235,0.04),rgba(37,99,235,0.1)); }
+      .year-card.current-year .year-num { color:var(--electric); }
+
+      /* Info pill */
+      .info-pill {
+        display:inline-flex; align-items:center; gap:8px;
+        background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
+        color:rgba(255,255,255,0.9); padding:8px 18px; border-radius:40px;
+        font-size:0.85rem; font-weight:500;
+      }
+
+      /* Resource card */
+      .resource-card {
+        background:white; border:1px solid var(--border); border-radius:16px;
+        padding:24px 28px; display:flex; align-items:center; gap:16px;
+        transition:all 0.25s ease; text-decoration:none; color:inherit;
+      }
+      .resource-card:hover {
+        border-color:var(--electric); box-shadow:0 6px 20px rgba(37,99,235,0.1);
+        transform:translateY(-2px);
+      }
+      .resource-icon {
+        width:48px; height:48px; border-radius:12px;
+        background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.05));
+        border:1px solid rgba(37,99,235,0.15); display:flex; align-items:center;
+        justify-content:center; flex-shrink:0;
+      }
+
+      @keyframes pulse-dot { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+      .pulse-dot { animation:pulse-dot 2s ease-in-out infinite; }
+    </style>
+</head>
+<body class="bg-white">
+
+  <!-- ===== STICKY HEADER ===== -->
+  <header id="site-header-h7k2" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background:var(--navy);">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex items-center justify-between h-16 md:h-[72px]">
+      <a href="index.html" class="flex items-center gap-3 no-underline">
+        <span class="text-xl md:text-2xl font-black tracking-wider" style="color:var(--electric);">K3QBD</span>
+        <span class="hidden sm:block text-white text-sm font-medium opacity-80">First State Amateur Radio Club</span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-6" aria-label="Main navigation">
+        <a href="index.html"       class="nav-link" data-nav="home">Welcome</a>
+        <a href="solar-data.html"  class="nav-link" data-nav="solar-data">Solar Data</a>
+        <a href="meetings.html"    class="nav-link" data-nav="meetings">Meetings</a>
+        <a href="nets.html"        class="nav-link" data-nav="nets">Nets</a>
+        <a href="contests.html"    class="nav-link" data-nav="contests">Contests</a>
+        <a href="qso-party.html"   class="nav-link active" data-nav="qso-party">QSO Party</a>
+        <a href="ares.html"        class="nav-link" data-nav="ares">ARES</a>
+        <a href="contact.html"     class="nav-link" data-nav="contact">Contact</a>
+      </nav>
+      <button id="mobile-menu-btn-f6g7" class="lg:hidden p-2 text-white rounded-lg hover:bg-white/10 transition-colors" aria-label="Open navigation menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <nav id="mobile-menu-h8i9" class="hidden lg:hidden" style="background:var(--navy);" aria-label="Mobile navigation">
+      <div class="max-w-7xl mx-auto px-4 pb-4 flex flex-col gap-1 mobile-menu-enter">
+        <div class="flex justify-end mb-2">
+          <button id="mobile-menu-close-j0k1" class="p-2 text-white rounded-lg hover:bg-white/10 transition-colors" aria-label="Close navigation menu">
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
+        </div>
+        <a href="index.html"      class="mobile-nav-link text-white/80 hover:text-white hover:bg-white/5 px-4 py-3 rounded-lg transition-colors text-sm font-medium no-underline">Welcome</a>
+        <a href="solar-data.html" class="mobile-nav-link text-white/80 hover:text-white hover:bg-white/5 px-4 py-3 rounded-lg transition-colors text-sm font-medium no-underline">Solar Data</a>
+        <a href="meetings.html"   class="mobile-nav-link text-white/80 hover:text-white hover:bg-white/5 px-4 py-3 rounded-lg transition-colors text-sm font-medium no-underline">Meetings</a>
+        <a href="nets.html"       class="mobile-nav-link text-white/80 hover:text-white hover:bg-white/5 px-4 py-3 rounded-lg transition-colors text-sm font-medium no-underline">Nets</a>
+        <a href="contests.html"   class="mobile-nav-link text-white/80 hover:text-white hover:bg-white/5 px-4 py-3 rounded-lg transition-colors text-sm font-medium no-underline">Contests</a>
+        <a href="qso-party.html"  class="mobile-nav-link text-white/80 hover:text-white hover:bg-white/5 px-4 py-3 rounded-lg transition-colors text-sm font-medium no-underline">QSO Party</a>
+        <a href="ares.html"       class="mobile-nav-link text-white/80 hover:text-white hover:bg-white/5 px-4 py-3 rounded-lg transition-colors text-sm font-medium no-underline">ARES</a>
+        <a href="contact.html"    class="mobile-nav-link text-white/80 hover:text-white hover:bg-white/5 px-4 py-3 rounded-lg transition-colors text-sm font-medium no-underline">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main style="padding-top:72px;">
+
+    <!-- ===== HERO ===== -->
+    <section class="qso-hero section-animate" style="padding:64px 0 72px;">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 text-center relative z-10">
+        <div class="contest-badge mb-6">
+          <i data-lucide="radio" class="w-4 h-4"></i>
+          Annual Contest
+        </div>
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight">
+          Delaware<br><span style="color:var(--electric-light);">QSO Party</span>
+        </h1>
+        <p class="text-white/60 text-base md:text-lg mb-8 max-w-xl mx-auto">Sponsored by the First State Amateur Radio Club &bull; Running annually since 2007</p>
+
+        <!-- Contest period banner -->
+        <div class="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-6 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 mb-8">
+          <div class="flex items-center gap-2 text-white/50 text-sm font-semibold uppercase tracking-widest">
+            <span class="pulse-dot w-2 h-2 rounded-full bg-green-400 inline-block"></span>
+            2026 Contest Period
+          </div>
+          <div class="text-white font-bold text-lg md:text-xl tracking-wide">
+            1700Z May 2 &ndash; 2359Z May 3, 2026
+          </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="https://www.fsarc.org/qsoparty/rules.htm" target="_blank" rel="noopener" class="btn-primary">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+            View Current Rules
+          </a>
+          <a href="https://www.fsarc.org/qsoparty/2026_results.htm" target="_blank" rel="noopener" class="btn-ghost">
+            <i data-lucide="trophy" class="w-4 h-4"></i>
+            2026 Results
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section-padding section-animate" style="background:var(--surface);">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 text-sm font-semibold tracking-widest uppercase mb-3" style="color:var(--electric);">
+            <i data-lucide="info" class="w-4 h-4"></i>
+            About the Event
+          </div>
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4" style="color:var(--navy);">What is the Delaware QSO Party?</h2>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <!-- Main description card -->
+          <div class="bg-white rounded-2xl p-6 md:p-10 border border-gray-100 mb-8" style="box-shadow:var(--shadow-md);">
+            <p class="text-gray-600 text-base md:text-lg leading-relaxed mb-5">
+              The Delaware QSO Party is an exciting annual contest that invites amateur radio operators from across the country — and beyond — to make contacts with stations in Delaware. Held over a weekend, this event provides a unique opportunity for hams to work all <strong>three counties</strong> in the First State while testing their operating skills and enjoying the camaraderie of fellow radio enthusiasts.
+            </p>
+            <p class="text-gray-600 text-base md:text-lg leading-relaxed mb-5">
+              Whether you're a seasoned contester or a casual operator, the Delaware QSO Party offers a fun and rewarding experience with a variety of operating categories and certificates available for participants. This is also a great event to combine with a park activation (POTA) while you're out in the field!
+            </p>
+            <p class="text-gray-600 text-base leading-relaxed">
+              Stations operating from Delaware play a key role in providing multipliers for participants aiming for top scores. Delaware is often a sought-after state in radio contests, making your participation especially valuable to operators across North America.
+            </p>
+          </div>
+
+          <!-- 3 highlight cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 card-hover text-center" style="box-shadow:var(--shadow-card);">
+              <div class="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(37,99,235,0.08); border:1px solid rgba(37,99,235,0.15);">
+                <i data-lucide="map-pin" class="w-6 h-6" style="color:var(--electric);"></i>
+              </div>
+              <h3 class="font-bold mb-2" style="color:var(--navy);">All 3 Counties</h3>
+              <p class="text-gray-500 text-sm">Work New Castle, Kent, and Sussex County stations for full Delaware coverage.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 card-hover text-center" style="box-shadow:var(--shadow-card);">
+              <div class="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(37,99,235,0.08); border:1px solid rgba(37,99,235,0.15);">
+                <i data-lucide="award" class="w-6 h-6" style="color:var(--electric);"></i>
+              </div>
+              <h3 class="font-bold mb-2" style="color:var(--navy);">Certificates Awarded</h3>
+              <p class="text-gray-500 text-sm">Multiple operating categories with certificates available for top finishers.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 card-hover text-center" style="box-shadow:var(--shadow-card);">
+              <div class="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(37,99,235,0.08); border:1px solid rgba(37,99,235,0.15);">
+                <i data-lucide="trees" class="w-6 h-6" style="color:var(--electric);"></i>
+              </div>
+              <h3 class="font-bold mb-2" style="color:var(--navy);">POTA Friendly</h3>
+              <p class="text-gray-500 text-sm">Great opportunity to combine your QSO Party operating with a Parks on the Air activation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RESOURCES ===== -->
+    <section class="section-padding section-animate" style="background:white;">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 text-sm font-semibold tracking-widest uppercase mb-3" style="color:var(--electric);">
+            <i data-lucide="folder-open" class="w-4 h-4"></i>
+            Resources
+          </div>
+          <h2 class="text-2xl md:text-3xl font-bold" style="color:var(--navy);">Contest Resources</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+          <a href="https://www.fsarc.org/qsoparty/rules.htm" target="_blank" rel="noopener" class="resource-card">
+            <div class="resource-icon">
+              <i data-lucide="file-text" class="w-6 h-6" style="color:var(--electric);"></i>
+            </div>
+            <div>
+              <div class="font-bold text-sm" style="color:var(--navy);">Contest Rules</div>
+              <div class="text-xs text-gray-400 mt-0.5">Current rules &amp; scoring</div>
+            </div>
+            <i data-lucide="external-link" class="w-4 h-4 text-gray-300 ml-auto flex-shrink-0"></i>
+          </a>
+          <a href="https://www.fsarc.org/qsoparty/logsoftware.htm" target="_blank" rel="noopener" class="resource-card">
+            <div class="resource-icon">
+              <i data-lucide="monitor" class="w-6 h-6" style="color:var(--electric);"></i>
+            </div>
+            <div>
+              <div class="font-bold text-sm" style="color:var(--navy);">Logging Software</div>
+              <div class="text-xs text-gray-400 mt-0.5">Recommended contest loggers</div>
+            </div>
+            <i data-lucide="external-link" class="w-4 h-4 text-gray-300 ml-auto flex-shrink-0"></i>
+          </a>
+          <a href="https://www.fsarc.org/qsoparty/cabrillo.htm" target="_blank" rel="noopener" class="resource-card">
+            <div class="resource-icon">
+              <i data-lucide="upload" class="w-6 h-6" style="color:var(--electric);"></i>
+            </div>
+            <div>
+              <div class="font-bold text-sm" style="color:var(--navy);">Cabrillo Log Submission</div>
+              <div class="text-xs text-gray-400 mt-0.5">How to format &amp; submit logs</div>
+            </div>
+            <i data-lucide="external-link" class="w-4 h-4 text-gray-300 ml-auto flex-shrink-0"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PAST RESULTS ===== -->
+    <section class="section-padding section-animate" style="background:var(--surface);">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 text-sm font-semibold tracking-widest uppercase mb-3" style="color:var(--electric);">
+            <i data-lucide="trophy" class="w-4 h-4"></i>
+            Archives
+          </div>
+          <h2 class="text-2xl md:text-3xl font-bold mb-2" style="color:var(--navy);">Past Results</h2>
+          <p class="text-gray-500 text-sm">Click any year to view scores and logs</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+          <!-- Current year featured -->
+          <a href="https://www.fsarc.org/qsoparty/2026results.htm" target="_blank" rel="noopener"
+             class="block bg-white rounded-2xl p-6 border-2 mb-6 text-center card-hover no-underline"
+             style="border-color:var(--electric); box-shadow:0 4px 20px rgba(37,99,235,0.12);">
+            <div class="inline-flex items-center gap-2 mb-2 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full" style="background:linear-gradient(135deg,var(--electric),var(--electric-light)); color:white;">
+              <i data-lucide="star" class="w-3 h-3"></i>
+              Most Recent
+            </div>
+            <div class="text-4xl font-black mt-1" style="color:var(--electric);">2026</div>
+            <div class="text-gray-500 text-sm mt-1">View Scores &amp; Results</div>
+          </a>
+
+          <!-- Grid of older years -->
+          <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+            <a href="https://www.fsarc.org/qsoparty/2025results.htm" target="_blank" rel="noopener" class="year-card no-underline">
+              <div class="year-num">2025</div><div class="year-label">Results</div>
+            </a>
+            <a href="https://www.fsarc.org/qsoparty/2024results.htm" target="_blank" rel="noopener" class="year-card no-underline">
+              <div class="year-num">2024</div><div class="year-label">Results</div>
+            </a>
+            <a href="https://www.fsarc.org/qsoparty/2023results.htm" target="_blank" rel="noopener" class="year-card no-underline">
+              <div class="year-num">2023</div><div class="year-label">Results</div>
+            </a>
+            <a href="https://www.fsarc.org/qsoparty/2022results.htm" target="_blank" rel="noopener" class="year-card no-underline">
+              <div class="year-num">2022</div><div class="year-label">Results</div>
+            </a>
+            <a href="https://www.fsarc.org/qsoparty/2021results.htm" target="_blank" rel="noopener" class="year-card no-underline">
+              <div class="year-num">2021</div><div class="year-label">Results</div>
+            </a>
+            <a href="https://www.fsarc.org/qsoparty/2020results.htm" target="_blank" rel="noopener" class="year-card no-underline">
+              <div class="year-num">2020</div><div class="year-label">Results</div>
+            </a>
+            <a href="https://www.fsarc.org/qsoparty/2019results.htm" target="_blank" rel="noopener" class="year-card no-underline">
+              <div class="year-num">2019</div><div class="year-label">Results</div>
+            </a>
+            <a href="https://www.fsarc.org/qsoparty/2018results.htm" target="_blank" rel="noopener" class="year-card no-underline">
+              <div class="year-num">2018</div><div class="year-label">Results</div>
+            </a>
+            <a href="https://www.fsarc.org/qsoparty/2017results.htm" target="_blank" rel="noopener" class="year-card no-underline">
+              <div class="year-num">2017</div><div class="year-label">Results</div>
+            </a>
+            <a href="https://www.fsarc.org/qsoparty/2016results.htm" target="_blank" rel="noopener" class="year-card no-underline">
+              <div class="year-num">2016</div><div class="year-label">Results</div>
+            </a>
+            <a href="https://www.fsarc.org/qsoparty/2015results.htm" target="_blank" rel="noopener" class="year-card no-underline">
+              <div class="year-num">2015</div><div class="year-label">Results</div>
+            </a>
+            <a href="https://www.fsarc.org/qsoparty/olderresults.htm" target="_blank" rel="noopener" class="year-card no-underline">
+              <div class="year-num" style="font-size:1rem;">Older</div><div class="year-label">Archives</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="section-animate" style="background:var(--navy); padding:56px 0;">
+      <div class="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Ready to Participate?</h2>
+        <p class="text-white/60 mb-8 max-w-xl mx-auto">Download the rules, set up your logging software, and join us on the air for the next Delaware QSO Party. Every contact counts!</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://www.fsarc.org/qsoparty/rules.htm" target="_blank" rel="noopener" class="btn-primary">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+            Read the Rules
+          </a>
+          <a href="contact.html" class="btn-ghost">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            Contact FSARC
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="background:var(--navy-dark); border-top:2px solid var(--electric);">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xl font-black tracking-wider" style="color:var(--electric);">K3QBD</span>
+          </div>
+          <p class="text-white/60 text-sm font-medium mb-1">First State Amateur Radio Club</p>
+          <p class="text-white/40 text-xs">ARRL Affiliated Club</p>
+        </div>
+        <nav class="flex flex-wrap justify-start md:justify-center gap-x-6 gap-y-2" aria-label="Footer navigation">
+          <a href="index.html"      class="text-white/50 hover:text-white text-sm transition-colors no-underline">Welcome</a>
+          <a href="solar-data.html" class="text-white/50 hover:text-white text-sm transition-colors no-underline">Solar Data</a>
+          <a href="meetings.html"   class="text-white/50 hover:text-white text-sm transition-colors no-underline">Meetings</a>
+          <a href="nets.html"       class="text-white/50 hover:text-white text-sm transition-colors no-underline">Nets</a>
+          <a href="contests.html"   class="text-white/50 hover:text-white text-sm transition-colors no-underline">Contests</a>
+          <a href="qso-party.html"  class="text-white/50 hover:text-white text-sm transition-colors no-underline">QSO Party</a>
+          <a href="ares.html"       class="text-white/50 hover:text-white text-sm transition-colors no-underline">ARES</a>
+          <a href="contact.html"    class="text-white/50 hover:text-white text-sm transition-colors no-underline">Contact</a>
+        </nav>
+        <div class="md:text-right">
+          <p class="text-white/40 text-sm">&copy; 2026 FSARC &ndash; K3QBD</p>
+          <p class="text-white/30 text-xs mt-1">All rights reserved</p>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-white/10 text-center">
+        <p class="text-white/30 text-xs">First State Amateur Radio Club</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") lucide.createIcons();
+    var mobileMenuBtn   = document.getElementById('mobile-menu-btn-f6g7');
+    var mobileMenuClose = document.getElementById('mobile-menu-close-j0k1');
+    var mobileMenu      = document.getElementById('mobile-menu-h8i9');
+    if (mobileMenuBtn && mobileMenu) mobileMenuBtn.addEventListener('click', function(){ mobileMenu.classList.remove('hidden'); });
+    if (mobileMenuClose && mobileMenu) mobileMenuClose.addEventListener('click', function(){ mobileMenu.classList.add('hidden'); });
+    document.querySelectorAll('.mobile-nav-link').forEach(function(l){ l.addEventListener('click', function(){ if(mobileMenu) mobileMenu.classList.add('hidden'); }); });
+    var header = document.getElementById('site-header-h7k2');
+    window.addEventListener('scroll', function(){ if(header) header.classList.toggle('header-scrolled', window.scrollY > 20); });
+    var animateSections = document.querySelectorAll('.section-animate');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      animateSections.forEach(function(s){ observer.observe(s); });
+    } else {
+      animateSections.forEach(function(s){ s.classList.add('visible'); });
+    }
+  </script>
+</body>
+</html>
