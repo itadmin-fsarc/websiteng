@@ -526,86 +526,29 @@
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
             <!-- Primary Solar Widget -->
             <div id="solar-widget-primary-f2g3" class="solar-widget">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="w-10 h-10 rounded-xl bg-yellow-500/20 flex items-center justify-center">
-                  <i data-lucide="sun" class="w-5 h-5 text-yellow-400"></i>
-                </div>
-                <div>
-                  <h3 class="text-white font-bold text-base">Solar Conditions</h3>
-                  <p class="text-white/50 text-xs">HamQSL / NOAA Data</p>
-                </div>
-              </div>
-              <div class="grid grid-cols-2 gap-3 mb-5">
-                <div class="bg-white/5 rounded-xl p-4 text-center">
-                  <p class="text-white/50 text-xs mb-1">Solar Flux Index</p>
-                  <p class="text-2xl font-bold text-electric-400">178</p>
-                </div>
-                <div class="bg-white/5 rounded-xl p-4 text-center">
-                  <p class="text-white/50 text-xs mb-1">Sunspot Number</p>
-                  <p class="text-2xl font-bold text-electric-400">142</p>
-                </div>
-                <div class="bg-white/5 rounded-xl p-4 text-center">
-                  <p class="text-white/50 text-xs mb-1">A-Index</p>
-                  <p class="text-2xl font-bold text-green-400">8</p>
-                </div>
-                <div class="bg-white/5 rounded-xl p-4 text-center">
-                  <p class="text-white/50 text-xs mb-1">K-Index</p>
-                  <p class="text-2xl font-bold text-green-400">2</p>
-                </div>
-              </div>
-              <p class="text-white/40 text-xs text-center">
-                For live data, visit <span class="text-electric-400 font-medium">hamqsl.com/solar101vhf.php</span>
-              </p>
+              <h3 class="text-white font-bold text-base mb-4">
+                  Live Solar Conditions
+              </h3>
+
+              <img
+                  src="https://www.hamqsl.com/solar101vhf.php"
+                  alt="Live Solar Data"
+                  class="w-full rounded-lg bg-white"
+              >
             </div>
 
             <!-- Band Conditions Widget -->
             <div id="solar-widget-bands-h4i5" class="solar-widget">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="w-10 h-10 rounded-xl bg-electric-500/20 flex items-center justify-center">
-                  <i data-lucide="radio" class="w-5 h-5 text-electric-400"></i>
-                </div>
-                <div>
-                  <h3 class="text-white font-bold text-base">HF Band Conditions</h3>
-                  <p class="text-white/50 text-xs">Current Propagation Estimate</p>
-                </div>
-              </div>
-              <div class="space-y-2">
-                <div class="band-indicator band-good">
-                  <span>80m–40m</span>
-                  <span class="font-bold">Good</span>
-                </div>
-                <div class="band-indicator band-good">
-                  <span>30m–20m</span>
-                  <span class="font-bold">Good</span>
-                </div>
-                <div class="band-indicator band-good">
-                  <span>17m–15m</span>
-                  <span class="font-bold">Good</span>
-                </div>
-                <div class="band-indicator band-fair">
-                  <span>12m–10m</span>
-                  <span class="font-bold">Fair</span>
-                </div>
-                <div class="band-indicator band-fair">
-                  <span>6m</span>
-                  <span class="font-bold">Fair</span>
-                </div>
-                <div class="band-indicator band-poor">
-                  <span>2m (E-Skip)</span>
-                  <span class="font-bold">Poor</span>
-                </div>
-              </div>
-              <p class="text-white/40 text-xs text-center mt-4">
-                For live data, visit <span class="text-electric-400 font-medium">hamqsl.com/solar.php</span>
-              </p>
-            </div>
-          </div>
+            <h3 class="text-white font-bold text-base mb-4">
+                Live Band Conditions
+            </h3>
 
-          <div class="text-center">
-            <p class="text-gray-400 text-sm flex items-center justify-center gap-2">
-              <i data-lucide="info" class="w-4 h-4"></i>
-              Sample data shown. Visit HamQSL.com for real-time solar and propagation data.
-            </p>
+            <img
+                src="https://www.hamqsl.com/solar.php"
+                alt="Band Conditions"
+                class="w-full rounded-lg bg-white"
+            >
+           </div>
           </div>
         </div>
       </section>

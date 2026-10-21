@@ -461,7 +461,49 @@
       .pulse-dot {
         animation: pulse-dot 2s ease-in-out infinite;
       }
+.year-section {
+    margin-bottom: 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
 
+.year-section summary {
+    background: #0a1a33;
+    color: white;
+    padding: 16px 20px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    transition: background 0.2s ease;
+}
+     .year-section summary:hover {
+          background: #13284d;
+      }
+
+      .year-section summary::-webkit-details-marker {
+          display: none;
+      }
+
+      .year-section summary::before {
+          content: "▶";
+          display: inline-block;
+          margin-right: 12px;
+          transition: transform 0.2s ease;
+      }
+
+      .year-section[open] summary::before {
+          transform: rotate(90deg);
+      }
+
+      .year-section .minutes-table {
+          margin: 0;
+          border-radius: 0;
+          box-shadow: none;
+      }
        .minutes-table {
             width: 100%;
             border-collapse: collapse;
@@ -513,8 +555,8 @@
         <nav class="hidden lg:flex items-center gap-6" aria-label="Main navigation" id="desktop-nav-d4e5">
           <a href="index.html" class="nav-link" data-nav="home">Welcome</a>
           <a href="solar-data.html" class="nav-link" data-nav="solar-data">Solar Data</a>
-          <a href="meetings.html" class="nav-link active" data-nav="meetings">Meetings</a>
-          <a href="minutes.html" class="nav-link active" data-nav="minutes">Meetings</a>    
+          <a href="meetings.html" class="nav-link" data-nav="meetings">Meetings</a>
+          <a href="minutes.html" class="nav-link active" data-nav="minutes">Minutes</a>    
           <a href="nets.html" class="nav-link" data-nav="nets">Nets</a>
           <a href="contests.html" class="nav-link" data-nav="contests">Contests</a>
           <a href="qso-party.html" class="nav-link" data-nav="qso-party">QSO Party</a>
@@ -556,8 +598,8 @@
     </div>
 
     <!-- CONTENT BLOCK -->
-   <div class="section">
-        <h2>2025</h2>
+  <details class="year-section" open>
+    <summary> Year: 2025</summary>
     <table class="minutes-table">
       <thead>
         <tr>
@@ -616,10 +658,10 @@
         </tr>  
       </tbody>
     </table>
-    </div>    
+    </details>    
     
-    <div class="section">
-        <h2>2024</h2>
+  <details class="year-section">
+    <summary> Year: 2024</summary>
     <table class="minutes-table">
       <thead>
         <tr>
@@ -678,11 +720,12 @@
         </tr>  
       </tbody>
     </table>
-    </div>
+  </details>
 
 <!-- COPY FROM HERE TO -->
-    <div class="section">
-        <h2>2023</h2>
+  <details class="year-section">
+    <summary> Year: 2023</summary>
+
     <table class="minutes-table">
       <thead>
         <tr>
@@ -741,11 +784,11 @@
         </tr>        
       </tbody>
     </table>    
-    </div>
+  </details>
     <!-- HERE FROM ABOVE TO duplicate the monthly table -->
 
-    <div class="section">
-        <h2>2022</h2>
+  <details class="year-section">
+    <summary> Year: 2022</summary>
     <table class="minutes-table">
       <thead>
         <tr>
@@ -804,10 +847,10 @@
         </tr> 
       </tbody>
     </table>    
-    </div>
+  </details>
 
-    <div class="section">
-            <h2>2021</h2>
+  <details class="year-section">
+    <summary> Year: 2021</summary>
     <table class="minutes-table">
       <thead>
         <tr>
@@ -866,10 +909,10 @@
         </tr> 
       </tbody>
     </table>    
-    </div>
+  </details>
     
-    <div class="section">
-            <h2>2020</h2>
+  <details class="year-section">
+    <summary> Year: 2020</summary>
     <table class="minutes-table">
       <thead>
         <tr>
@@ -928,10 +971,10 @@
         </tr>        
       </tbody>
     </table>    
-    </div>    
+  </details>    
 
-    <div class="section">
-        <h2>2019</h2>
+  <details class="year-section">
+    <summary> Year: 2019</summary>
     <table class="minutes-table">
       <thead>
         <tr>
@@ -990,10 +1033,10 @@
         </tr>  
       </tbody>
     </table>
-    </div>
+  </details>
     
-    <div class="section">
-        <h2>2018</h2>
+  <details class="year-section">
+    <summary> Year: 2018</summary>
     <table class="minutes-table">
       <thead>
         <tr>
@@ -1052,10 +1095,10 @@
         </tr>  
       </tbody>
     </table>
-    </div>    
+  </details>    
 
-    <div class="section">
-        <h2>2017</h2>
+  <details class="year-section">
+    <summary> Year: 2017</summary>
     <table class="minutes-table">
       <thead>
         <tr>
@@ -1110,10 +1153,10 @@
         </tr>  
       </tbody>
     </table>
-    </div>
+  </details>
 
-    <div class="section">
-        <h2>2016</h2>
+  <details class="year-section">
+    <summary> Year: 2016</summary>
     <table class="minutes-table">
       <thead>
         <tr>
@@ -1172,10 +1215,10 @@
         </tr>  
       </tbody>
     </table>
-    </div>    
+  </details>    
     
-    <div class="section">
-        <h2>2015</h2>
+  <details class="year-section">
+    <summary> Year: 2015</summary>
     <table class="minutes-table">
       <thead>
         <tr>
@@ -1226,10 +1269,10 @@
         </tr> 
       </tbody>
     </table>
-    </div>    
+  </details>    
     
-    <div class="section">
-        <h2>2014</h2>
+  <details class="year-section">
+    <summary> Year: 2014</summary>
     <table class="minutes-table">
       <thead>
         <tr>
@@ -1260,10 +1303,10 @@
         </tr>
       </tbody>
     </table>
-    </div>
+  </details>
     
-    <div class="section">
-        <h2>2013</h2>
+  <details class="year-section">
+    <summary> Year: 2013</summary>
     <table class="minutes-table">
       <thead>
         <tr>
@@ -1302,10 +1345,10 @@
         </tr>
       </tbody>
     </table>
-    </div>    
+  </details>    
     
-    <div class="section">
-        <h2>2010 - 2011 - 2012</h2>
+  <details class="year-section">
+    <summary> Year: 2012</summary>        
     <table class="minutes-table">
       <thead>
         <tr>
@@ -1313,20 +1356,25 @@
           <th>Minutes PDF</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>2012</td>
-        </tr>          
+      <tbody>          
         <tr>
           <td>July 2012</td>
           <td><a href="minutes/2012/201207_july.pdf" target="_blank">PDF</a></td>
         </tr>
+      </tbody>
+    </table>
+  </details>
+
+   <details class="year-section">
+    <summary> Year: 2011</summary>              
+    <table class="minutes-table">
+      <thead>
         <tr>
-          <td> </td>
+          <th>Month</th>
+          <th>Minutes PDF</th>
         </tr>
-        <tr>
-          <td>2011</td>
-        </tr>           
+      </thead>
+      <tbody>          
         <tr>
           <td>January 2011</td>
           <td><a href="minutes/2011/2011_january.pdf" target="_blank">PDF</a></td>
@@ -1348,17 +1396,26 @@
           <td><a href="minutes/2011/201107_july.pdf" target="_blank">PDF</a></td>
         </tr>
         <tr>
-          <td>August 2009</td>
-          <td><a href="minutes/2009/200908.pdf" target="_blank">PDF</a></td>
+          <td>August/Sept 2011</td>
+          <td><a href="minutes/2011/201108_09.pdf" target="_blank">PDF</a></td>
         </tr>
+      </tbody>
+    </table>
+  </details>  
+
+
+   <details class="year-section">
+    <summary> Year: 2010</summary>  
+    <table class="minutes-table">
+      <thead>
         <tr>
-          <td> </td>
+          <th>Month</th>
+          <th>Minutes PDF</th>
         </tr>
+      </thead>
+      <tbody>
         <tr>
-          <td>2010</td>
-        </tr>
-        <tr>
-          <td>Janaury 2010</td>
+          <td>January 2010</td>
           <td><a href="minutes/2010/2010_january.pdf" target="_blank">PDF</a></td>
         </tr>          
         <tr>
@@ -1374,19 +1431,19 @@
           <td><a href="minutes/2010/201006_June.pdf" target="_blank">PDF</a></td>
         </tr>
         <tr>
-          <td>October 2011</td>
+          <td>October 2010</td>
           <td><a href="minutes/2010/2010_october.pdf" target="_blank">PDF</a></td>
         </tr>
         <tr>
-          <td>November 2009</td>
+          <td>November 2010</td>
           <td><a href="minutes/2010/2010_november.pdf" target="_blank">PDF</a></td>
         </tr>
       </tbody>
     </table>
-    </div>  
+  </details>   
     
-    <div class="section">
-        <h2>2009</h2>
+   <details class="year-section">
+    <summary> Year: 2009</summary>  
     <table class="minutes-table">
       <thead>
         <tr>
@@ -1441,13 +1498,93 @@
         </tr>  
       </tbody>
     </table>
-    </div>    
+  </details>    
 <!--    PUT ALL TABLES BEFORE THIS div end tag -->
 </div>
-
-<footer>
-    © 2026 First State Amateur Radio Club – K3QBD
-</footer>
-
+</main>
+    <!-- ===== FOOTER ===== -->
+    <footer id="footer-b2c3" style="background: var(--navy-dark); border-top: 2px solid var(--electric);">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xl font-black tracking-wider" style="color: var(--electric);">K3QBD</span>
+            </div>
+            <p class="text-white/60 text-sm font-medium mb-1">First State Amateur Radio Club</p>
+            <p class="text-white/40 text-xs">ARRL Affiliated Club</p>
+          </div>
+          <nav class="flex flex-wrap justify-start md:justify-center gap-x-6 gap-y-2" aria-label="Footer navigation">
+            <a href="index.html" class="text-white/50 hover:text-white text-sm transition-colors no-underline">Welcome</a>
+            <a href="solar-data.html" class="text-white/50 hover:text-white text-sm transition-colors no-underline">Solar Data</a>
+            <a href="meetings.html" class="text-white/50 hover:text-white text-sm transition-colors no-underline">Meetings</a>
+            <a href="nets.html" class="text-white/50 hover:text-white text-sm transition-colors no-underline">Nets</a>
+            <a href="contests.html" class="text-white/50 hover:text-white text-sm transition-colors no-underline">Contests</a>
+            <a href="qso-party.html" class="text-white/50 hover:text-white text-sm transition-colors no-underline">QSO Party</a>
+            <a href="ares.html" class="text-white/50 hover:text-white text-sm transition-colors no-underline">ARES</a>
+            <a href="contact.html" class="text-white/50 hover:text-white text-sm transition-colors no-underline">Contact</a>
+          </nav>
+          <div class="md:text-right">
+            <p class="text-white/40 text-sm">&copy; 2026 FSARC &ndash; K3QBD</p>
+            <p class="text-white/30 text-xs mt-1">All rights reserved</p>
+          </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/10 text-center">
+          <p class="text-white/30 text-xs">First State Amateur Radio Club</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+        lucide.createIcons();
+      }
+      // Mobile Menu
+      var mobileMenuBtn   = document.getElementById('mobile-menu-btn-f6g7');
+      var mobileMenuClose = document.getElementById('mobile-menu-close-j0k1');
+      var mobileMenu      = document.getElementById('mobile-menu-h8i9');
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function() { mobileMenu.classList.remove('hidden'); });
+      }
+      if (mobileMenuClose && mobileMenu) {
+        mobileMenuClose.addEventListener('click', function() { mobileMenu.classList.add('hidden'); });
+      }
+      document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+        link.addEventListener('click', function() { if (mobileMenu) mobileMenu.classList.add('hidden'); });
+      });
+      // Sticky header shadow
+      var header = document.getElementById('site-header-h7k2');
+      window.addEventListener('scroll', function() {
+        if (header) {
+          header.classList.toggle('header-scrolled', window.scrollY > 20);
+        }
+      });
+      // Fade-in sections
+      var animateSections = document.querySelectorAll('.section-animate');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        animateSections.forEach(function(s) { observer.observe(s); });
+      } else {
+        animateSections.forEach(function(s) { s.classList.add('visible'); });
+      }
+      // Contact form demo
+      var contactForm = document.getElementById('contact-form-r0s1');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var btn = document.getElementById('contact-submit-z0a1');
+          var orig = btn.innerHTML;
+          btn.innerHTML = '<span>&#10003; Message Sent (Demo)</span>';
+          btn.style.background = '#16a34a';
+          btn.disabled = true;
+          setTimeout(function() {
+            btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; contactForm.reset();
+            if (typeof lucide !== "undefined") lucide.createIcons();
+          }, 2500);
+        });
+      }
+    </script>
 </body>
 </html>
