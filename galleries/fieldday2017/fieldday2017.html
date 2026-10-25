@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FSARC – Galleries</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: {
+                50: '#e6eaf1',
+                100: '#c0c9db',
+                200: '#8fa0bc',
+                300: '#5e779d',
+                400: '#385886',
+                500: '#0f1f3d',
+                600: '#0d1b35',
+                700: '#0a152b',
+                800: '#071020',
+                900: '#040a14',
+              },
+              electric: {
+                50: '#eff4ff',
+                100: '#dbe6fe',
+                200: '#bfd3fe',
+                300: '#93b4fd',
+                400: '#6090fa',
+                500: '#2563eb',
+                600: '#1d4ed8',
+                700: '#1e40af',
+                800: '#1e3a8a',
+                900: '#1e2d6d',
+              },
+              surface: {
+                light: '#f8fafc',
+                white: '#ffffff',
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="static/themes/classic/galleria.classic.css">
+    <style>
+      :root {
+        --navy: #0f1f3d;
+        --navy-light: #162a52;
+        --navy-dark: #0a152b;
+        --electric: #2563eb;
+        --electric-hover: #1d4ed8;
+        --electric-light: #3b82f6;
+        --white: #ffffff;
+        --surface: #f8fafc;
+        --text-primary: #0f172a;
+        --text-secondary: #475569;
+        --text-muted: #94a3b8;
+        --border: #e2e8f0;
+        --shadow-sm: 0 1px 3px rgba(15, 31, 61, 0.08);
+        --shadow-md: 0 4px 16px rgba(15, 31, 61, 0.1);
+        --shadow-lg: 0 8px 32px rgba(15, 31, 61, 0.12);
+        --shadow-card: 0 2px 8px rgba(15, 31, 61, 0.06);
+        --radius: 12px;
+        --radius-lg: 16px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+
+      body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        color: var(--text-primary);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Sticky Header */
+      .header-scrolled {
+        box-shadow: 0 2px 20px rgba(15, 31, 61, 0.3) !important;
+        backdrop-filter: blur(12px);
+      }
+
+      /* Radio Wave Animation */
+      @keyframes radioWave {
+        0% {
+          transform: scale(0.3);
+          opacity: 0.8;
+        }
+        100% {
+          transform: scale(2.5);
+          opacity: 0;
+        }
+      }
+
+      .radio-wave {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border: 2px solid rgba(37, 99, 235, 0.5);
+        border-radius: 50%;
+        animation: radioWave 3s ease-out infinite;
+      }
+
+      .radio-wave:nth-child(2) { animation-delay: 0.6s; }
+      .radio-wave:nth-child(3) { animation-delay: 1.2s; }
+      .radio-wave:nth-child(4) { animation-delay: 1.8s; }
+      .radio-wave:nth-child(5) { animation-delay: 2.4s; }
+
+      @keyframes pulse-glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
+        50% { box-shadow: 0 0 40px rgba(37, 99, 235, 0.6); }
+      }
+
+      .pulse-glow {
+        animation: pulse-glow 2s ease-in-out infinite;
+      }
+
+      /* Section fade-in */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+
+      .section-animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Card hover */
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      /* Button transitions */
+      .btn-primary {
+        background: var(--electric);
+        color: var(--white);
+        padding: 14px 32px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+      }
+
+      .btn-primary:hover {
+        background: var(--electric-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: var(--white);
+        padding: 14px 32px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        transition: all 0.25s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+      }
+
+      .btn-ghost:hover {
+        border-color: var(--white);
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+
+      /* Nav active */
+      .nav-link {
+        position: relative;
+        color: rgba(255, 255, 255, 0.75);
+        transition: color 0.25s ease;
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 6px 0;
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--electric);
+        transition: width 0.3s ease;
+        border-radius: 1px;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--white);
+      }
+
+      .nav-link.active::after,
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* Antenna SVG */
+      .antenna-tower {
+        filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.4));
+      }
+
+      /* Badge */
+      .callsign-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, var(--electric), var(--electric-light));
+        color: white;
+        padding: 8px 20px;
+        border-radius: 40px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+      }
+
+      /* Section padding */
+      .section-padding {
+        padding: 48px 0;
+      }
+
+      @media (min-width: 768px) {
+        .section-padding {
+          padding: 80px 0;
+        }
+      }
+
+      /* Solar placeholder */
+      .solar-widget {
+        background: linear-gradient(135deg, #0a152b, #162a52);
+        border: 1px solid rgba(37, 99, 235, 0.2);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        color: white;
+      }
+
+      .band-indicator {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      .band-good { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+      .band-fair { background: rgba(250, 204, 21, 0.15); color: #facc15; }
+      .band-poor { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+
+      /* Form inputs */
+      .form-input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        transition: border-color 0.25s ease;
+        outline: none;
+      }
+
+      .form-input:focus {
+        border-color: var(--electric);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .form-input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      /* Frequency badge */
+      .freq-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05));
+        border: 1px solid rgba(37, 99, 235, 0.2);
+        color: var(--electric);
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        font-family: 'Inter', monospace;
+      }
+
+      /* Mobile menu animation */
+      .mobile-menu-enter {
+        animation: slideDown 0.3s ease forwards;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ARES shield */
+      .ares-shield {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, var(--electric), #1d4ed8);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
+      }
+
+      /* Scroll indicator */
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(8px); }
+      }
+
+      .scroll-indicator {
+        animation: bounce 2s ease-in-out infinite;
+      }
+
+      /* Meeting card styles */
+      .meeting-card {
+        position: relative;
+        border-radius: 16px;
+        padding: 24px;
+        border: 1px solid #e2e8f0;
+        background: white;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .meeting-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .meeting-card.past {
+        opacity: 0.55;
+        background: #f9fafb;
+      }
+
+      .meeting-card.past:hover {
+        opacity: 0.75;
+      }
+
+      .meeting-card.upcoming {
+        border-color: rgba(37, 99, 235, 0.15);
+        background: white;
+      }
+
+      .meeting-card.next-meeting {
+        border-color: var(--electric);
+        border-width: 2px;
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.03), rgba(37, 99, 235, 0.08));
+        box-shadow: 0 4px 20px rgba(37, 99, 235, 0.12);
+      }
+
+      .meeting-card.next-meeting:hover {
+        box-shadow: 0 8px 32px rgba(37, 99, 235, 0.2);
+      }
+
+      .meeting-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      .badge-past {
+        background: #f1f5f9;
+        color: #94a3b8;
+      }
+
+      .badge-next {
+        background: linear-gradient(135deg, var(--electric), var(--electric-light));
+        color: white;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+      }
+
+      .badge-upcoming {
+        background: #ecfdf5;
+        color: #059669;
+      }
+
+      .badge-note {
+        background: #fef3c7;
+        color: #92400e;
+        font-size: 0.65rem;
+      }
+
+      .location-bar {
+        background: linear-gradient(135deg, #0a152b, #162a52);
+        border: 1px solid rgba(37, 99, 235, 0.2);
+        border-radius: 16px;
+        padding: 20px 24px;
+        color: white;
+      }
+
+      @keyframes pulse-dot {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+      }
+
+      .pulse-dot {
+        animation: pulse-dot 2s ease-in-out infinite;
+      }
+
+       .minutes-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+          }
+
+        .minutes-table thead {
+            background: #0a1a33;
+            color: #ffffff;
+          }
+
+        .minutes-table th, .minutes-table td {
+            padding: 14px 18px;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        .minutes-table tbody tr:nth-child(even) {
+            background: #f5f7fa;
+        }
+
+        .minutes-table a {
+            color: #0a4fff;
+            font-weight: 600;
+            text-decoration: none;
+          }
+
+        .minutes-table a:hover {
+            text-decoration: underline;
+          }      
+        #galleria,
+        #galleria-container,
+        #gallery {
+            min-height: 700px;
+        }
+
+        .galleria-container {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(15,31,61,.12);
+        }          
+    </style>
+  
+</head>
+  <body class="bg-white">
+    <!-- ===== STICKY HEADER ===== -->
+    <header id="site-header-h7k2" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: var(--navy);">
+      <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex items-center justify-between h-16 md:h-[72px]">
+        <!-- Logo -->
+        <a href="../../index.html" class="flex items-center gap-3 no-underline" id="logo-link-a3b2">
+          <span class="text-xl md:text-2xl font-black tracking-wider" style="color: var(--electric);">K3QBD</span>
+          <span class="hidden sm:block text-white text-sm font-medium opacity-80">First State Amateur Radio Club</span>
+        </a>
+        <!-- Desktop Nav -->
+        <nav class="hidden lg:flex items-center gap-6" aria-label="Main navigation" id="desktop-nav-d4e5">
+          <a href="../../galleries.html" class="nav-link active" data-nav="meetings">Galleries</a>
+        </nav>
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn-f6g7" class="lg:hidden p-2 text-white rounded-lg hover:bg-white/10 transition-colors" aria-label="Open navigation menu">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <!-- Mobile Nav -->
+      <nav id="mobile-menu-h8i9" class="hidden lg:hidden" style="background: var(--navy);" aria-label="Mobile navigation">
+        <div class="max-w-7xl mx-auto px-4 pb-4 flex flex-col gap-1 mobile-menu-enter">
+          <div class="flex justify-end mb-2">
+            <button id="mobile-menu-close-j0k1" class="p-2 text-white rounded-lg hover:bg-white/10 transition-colors" aria-label="Close navigation menu">
+              <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+          </div>
+          <a href="../../galleries.html" class="mobile-nav-link text-white/80 hover:text-white hover:bg-white/5 px-4 py-3 rounded-lg transition-colors text-sm font-medium no-underline">Galleries</a>
+        </div>
+      </nav>
+    </header>
+    <main style="padding-top: 72px;">
+
+      <section id="gallery-page" class="section-padding bg-white">
+          <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+              <div class="text-center mb-8">
+                  <h1 class="text-3xl md:text-4xl font-bold text-navy-500">
+                      Field Day 2017
+                  </h1>
+
+                  <p class="text-gray-500 mt-2">
+                      First State Amateur Radio Club Photo Archive
+                  </p>
+              </div>
+
+              <div id="gallery"></div>
+                <script src="static/jquery-3.3.1.min.js"></script>
+                <script src="static/galleria.min.js"></script>
+                <script src="static/themes/classic/galleria.classic.min.js"></script>
+                <script src="static/plugins/history/galleria.history.min.js"></script>
+                <script>
+                  <!-- ===== var loop goes in between ===== -->
+                  var data = [
+              {
+                      title: "Alan Hansen - IMG_1158",
+                      description: "",
+                      thumb: "thumbnails/Alan%20Hansen%20-%20IMG_1158.JPG",
+                      image: "Alan%20Hansen%20-%20IMG_1158.JPG"
+                    },
+              {
+                      title: "Alan Hansen - IMG_1159",
+                      description: "",
+                      thumb: "thumbnails/Alan%20Hansen%20-%20IMG_1159.JPG",
+                      image: "Alan%20Hansen%20-%20IMG_1159.JPG"
+                    },
+              {
+                      title: "Alan Hansen - IMG_1160",
+                      description: "",
+                      thumb: "thumbnails/Alan%20Hansen%20-%20IMG_1160.JPG",
+                      image: "Alan%20Hansen%20-%20IMG_1160.JPG"
+                    },
+              {
+                      title: "Alan Hansen - IMG_1162",
+                      description: "",
+                      thumb: "thumbnails/Alan%20Hansen%20-%20IMG_1162.JPG",
+                      image: "Alan%20Hansen%20-%20IMG_1162.JPG"
+                    },
+              {
+                      title: "Alan Hansen - IMG_1163",
+                      description: "",
+                      thumb: "thumbnails/Alan%20Hansen%20-%20IMG_1163.JPG",
+                      image: "Alan%20Hansen%20-%20IMG_1163.JPG"
+                    },
+              {
+                      title: "Alan Hansen - IMG_1164",
+                      description: "",
+                      thumb: "thumbnails/Alan%20Hansen%20-%20IMG_1164.JPG",
+                      image: "Alan%20Hansen%20-%20IMG_1164.JPG"
+                    },
+              {
+                      title: "Alan Hansen - IMG_1173",
+                      description: "",
+                      thumb: "thumbnails/Alan%20Hansen%20-%20IMG_1173.JPG",
+                      image: "Alan%20Hansen%20-%20IMG_1173.JPG"
+                    },
+              {
+                      title: "Greg Newman - 20170530_195352",
+                      description: "",
+                      thumb: "thumbnails/Greg%20Newman%20-%2020170530_195352.jpg",
+                      image: "Greg%20Newman%20-%2020170530_195352.jpg"
+                    },
+              {
+                      title: "Greg Newman - 20170625_054305",
+                      description: "",
+                      thumb: "thumbnails/Greg%20Newman%20-%2020170625_054305.jpg",
+                      image: "Greg%20Newman%20-%2020170625_054305.jpg"
+                    },
+              {
+                      title: "Greg Newman - 20170625_054312",
+                      description: "",
+                      thumb: "thumbnails/Greg%20Newman%20-%2020170625_054312.jpg",
+                      image: "Greg%20Newman%20-%2020170625_054312.jpg"
+                    },
+              {
+                      title: "Greg Newman - 20170625_054342",
+                      description: "",
+                      thumb: "thumbnails/Greg%20Newman%20-%2020170625_054342.jpg",
+                      image: "Greg%20Newman%20-%2020170625_054342.jpg"
+                    },
+              {
+                      title: "Greg Newman - 20170625_071706",
+                      description: "",
+                      thumb: "thumbnails/Greg%20Newman%20-%2020170625_071706.jpg",
+                      image: "Greg%20Newman%20-%2020170625_071706.jpg"
+                    },
+              {
+                      title: "Greg Newman - 20170625_071710",
+                      description: "",
+                      thumb: "thumbnails/Greg%20Newman%20-%2020170625_071710.jpg",
+                      image: "Greg%20Newman%20-%2020170625_071710.jpg"
+                    },
+              {
+                      title: "Jerry  Simonowits - IMG_8111",
+                      description: "",
+                      thumb: "thumbnails/Jerry%20%20Simonowits%20-%20IMG_8111.JPG",
+                      image: "Jerry%20%20Simonowits%20-%20IMG_8111.JPG"
+                    },
+              {
+                      title: "Jerry  Simonowits - IMG_8112",
+                      description: "",
+                      thumb: "thumbnails/Jerry%20%20Simonowits%20-%20IMG_8112.JPG",
+                      image: "Jerry%20%20Simonowits%20-%20IMG_8112.JPG"
+                    },
+              {
+                      title: "Jerry  Simonowits - IMG_8113",
+                      description: "",
+                      thumb: "thumbnails/Jerry%20%20Simonowits%20-%20IMG_8113.JPG",
+                      image: "Jerry%20%20Simonowits%20-%20IMG_8113.JPG"
+                    },
+              {
+                      title: "Jerry  Simonowits - IMG_8114",
+                      description: "",
+                      thumb: "thumbnails/Jerry%20%20Simonowits%20-%20IMG_8114.JPG",
+                      image: "Jerry%20%20Simonowits%20-%20IMG_8114.JPG"
+                    },
+              {
+                      title: "Jerry  Simonowits - IMG_8115",
+                      description: "",
+                      thumb: "thumbnails/Jerry%20%20Simonowits%20-%20IMG_8115.JPG",
+                      image: "Jerry%20%20Simonowits%20-%20IMG_8115.JPG"
+                    },
+              {
+                      title: "Jerry  Simonowits - IMG_8116",
+                      description: "",
+                      thumb: "thumbnails/Jerry%20%20Simonowits%20-%20IMG_8116.JPG",
+                      image: "Jerry%20%20Simonowits%20-%20IMG_8116.JPG"
+                    },
+              {
+                      title: "Jerry  Simonowits - IMG_8117",
+                      description: "",
+                      thumb: "thumbnails/Jerry%20%20Simonowits%20-%20IMG_8117.JPG",
+                      image: "Jerry%20%20Simonowits%20-%20IMG_8117.JPG"
+                    },
+              {
+                      title: "Jerry  Simonowits - IMG_8118",
+                      description: "",
+                      thumb: "thumbnails/Jerry%20%20Simonowits%20-%20IMG_8118.JPG",
+                      image: "Jerry%20%20Simonowits%20-%20IMG_8118.JPG"
+                    },
+              {
+                      title: "Jerry  Simonowits - IMG_8119",
+                      description: "",
+                      thumb: "thumbnails/Jerry%20%20Simonowits%20-%20IMG_8119.JPG",
+                      image: "Jerry%20%20Simonowits%20-%20IMG_8119.JPG"
+                    },
+              {
+                      title: "Mike Federico - 20170624_104343",
+                      description: "",
+                      thumb: "thumbnails/Mike%20Federico%20-%2020170624_104343.jpg",
+                      image: "Mike%20Federico%20-%2020170624_104343.jpg"
+                    },
+              {
+                      title: "Mike Federico - 20170624_104348",
+                      description: "",
+                      thumb: "thumbnails/Mike%20Federico%20-%2020170624_104348.jpg",
+                      image: "Mike%20Federico%20-%2020170624_104348.jpg"
+                    },
+              {
+                      title: "Mike Federico - 20170624_104350",
+                      description: "",
+                      thumb: "thumbnails/Mike%20Federico%20-%2020170624_104350.jpg",
+                      image: "Mike%20Federico%20-%2020170624_104350.jpg"
+                    },
+              {
+                      title: "Mike Federico - 20170624_113121",
+                      description: "",
+                      thumb: "thumbnails/Mike%20Federico%20-%2020170624_113121.jpg",
+                      image: "Mike%20Federico%20-%2020170624_113121.jpg"
+                    },
+              {
+                      title: "Mike Federico - 20170624_113151",
+                      description: "",
+                      thumb: "thumbnails/Mike%20Federico%20-%2020170624_113151.jpg",
+                      image: "Mike%20Federico%20-%2020170624_113151.jpg"
+                    },
+              {
+                      title: "Mike Federico - 20170624_113640",
+                      description: "",
+                      thumb: "thumbnails/Mike%20Federico%20-%2020170624_113640.jpg",
+                      image: "Mike%20Federico%20-%2020170624_113640.jpg"
+                    },
+              {
+                      title: "Mike Federico - 20170624_114323",
+                      description: "",
+                      thumb: "thumbnails/Mike%20Federico%20-%2020170624_114323.jpg",
+                      image: "Mike%20Federico%20-%2020170624_114323.jpg"
+                    },
+              {
+                      title: "Mike Federico - 20170624_115434",
+                      description: "",
+                      thumb: "thumbnails/Mike%20Federico%20-%2020170624_115434.jpg",
+                      image: "Mike%20Federico%20-%2020170624_115434.jpg"
+                    },
+              {
+                      title: "Mike Federico - 20170624_173134",
+                      description: "",
+                      thumb: "thumbnails/Mike%20Federico%20-%2020170624_173134.jpg",
+                      image: "Mike%20Federico%20-%2020170624_173134.jpg"
+                    },
+              {
+                      title: "Mike Federico - 20170625_134339_001",
+                      description: "",
+                      thumb: "thumbnails/Mike%20Federico%20-%2020170625_134339_001.jpg",
+                      image: "Mike%20Federico%20-%2020170625_134339_001.jpg"
+                    },
+              {
+                      title: "Tom Perry - DSC_0001",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0001.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0001.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0002",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0002.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0002.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0003",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0003.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0003.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0004",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0004.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0004.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0005",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0005.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0005.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0006",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0006.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0006.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0007",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0007.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0007.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0008",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0008.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0008.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0009",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0009.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0009.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0010",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0010.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0010.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0011",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0011.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0011.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0012",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0012.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0012.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0013",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0013.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0013.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0014",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0014.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0014.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0015",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0015.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0015.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0016",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0016.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0016.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0017",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0017.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0017.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0018",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0018.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0018.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0019",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0019.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0019.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0020",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0020.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0020.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0021",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0021.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0021.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0022",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0022.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0022.JPG"
+                    },
+              {
+                      title: "Tom Perry - DSC_0023",
+                      description: "",
+                      thumb: "thumbnails/Tom%20Perry%20-%20DSC_0023.JPG",
+                      image: "Tom%20Perry%20-%20DSC_0023.JPG"
+                    },
+                  ]
+
+                  <!-- ===== var loop goes in between ===== -->
+                Galleria.ready(function() {
+                    /*
+                    load thumbnails after gallery setup, and download has started
+                    for the main images, but before the loading of map tiles starts
+                    in the background. This ensures visible elements are prioritised
+                    over non-visible elements
+
+                    The choice to lazy load thumbnails in batches of 50 was not made
+                    scientifically. Other numbers may yield better performance.
+                    */
+                    this.lazyLoadChunks( 50 );
+
+                    this.attachKeyboard({
+                        right: this.next,
+                        left: this.prev,
+                        /* Toggle fullscreen display on press of 'f' key */
+                        0x46: this.toggleFullscreen,
+                    });
+
+                    var gallery = this;
+                    $('#fullscreen').click(function() {
+                      gallery.toggleFullscreen();
+                    });
+
+                    $('.icons').appendTo(this.$('container'));
+                });
+
+                Galleria.configure({
+                    imageCrop: false,
+                    transition: "fade",
+                    thumbnails: "lazy"
+                });
+                Galleria.run("#gallery", {dataSource: data});
+
+                </script>
+          </div>
+      </section>
+
+      </div>
+      </div>
+    </main>
+    <!-- ===== FOOTER ===== -->
+    <footer id="footer-b2c3" style="background: var(--navy-dark); border-top: 2px solid var(--electric);">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xl font-black tracking-wider" style="color: var(--electric);">K3QBD</span>
+            </div>
+            <p class="text-white/60 text-sm font-medium mb-1">First State Amateur Radio Club</p>
+            <p class="text-white/40 text-xs">ARRL Affiliated Club</p>
+          </div>
+          <nav class="flex flex-wrap justify-start md:justify-center gap-x-6 gap-y-2" aria-label="Footer navigation">
+            <a href="../../galleries.html" class="text-white/50 hover:text-white text-sm transition-colors no-underline">Galleries</a>
+          </nav>
+          <div class="md:text-right">
+            <p class="text-white/40 text-sm">&copy; 2026 FSARC &ndash; K3QBD</p>
+            <p class="text-white/30 text-xs mt-1">All rights reserved</p>
+          </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/10 text-center">
+          <p class="text-white/30 text-xs">First State Amateur Radio Club</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+        lucide.createIcons();
+      }
+      // Mobile Menu
+      var mobileMenuBtn   = document.getElementById('mobile-menu-btn-f6g7');
+      var mobileMenuClose = document.getElementById('mobile-menu-close-j0k1');
+      var mobileMenu      = document.getElementById('mobile-menu-h8i9');
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function() { mobileMenu.classList.remove('hidden'); });
+      }
+      if (mobileMenuClose && mobileMenu) {
+        mobileMenuClose.addEventListener('click', function() { mobileMenu.classList.add('hidden'); });
+      }
+      document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+        link.addEventListener('click', function() { if (mobileMenu) mobileMenu.classList.add('hidden'); });
+      });
+      // Sticky header shadow
+      var header = document.getElementById('site-header-h7k2');
+      window.addEventListener('scroll', function() {
+        if (header) {
+          header.classList.toggle('header-scrolled', window.scrollY > 20);
+        }
+      });
+      // Fade-in sections
+      var animateSections = document.querySelectorAll('.section-animate');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        animateSections.forEach(function(s) { observer.observe(s); });
+      } else {
+        animateSections.forEach(function(s) { s.classList.add('visible'); });
+      }
+      // Contact form demo
+      var contactForm = document.getElementById('contact-form-r0s1');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var btn = document.getElementById('contact-submit-z0a1');
+          var orig = btn.innerHTML;
+          btn.innerHTML = '<span>&#10003; Message Sent (Demo)</span>';
+          btn.style.background = '#16a34a';
+          btn.disabled = true;
+          setTimeout(function() {
+            btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; contactForm.reset();
+            if (typeof lucide !== "undefined") lucide.createIcons();
+          }, 2500);
+        });
+      }
+    </script>
+</body>
+</html>

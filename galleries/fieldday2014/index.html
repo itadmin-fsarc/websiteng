@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>photos - </title>
+    <meta name="description" content="">
+    <meta name="author" content="None">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="static/css/normalize.css">
+    <link rel="stylesheet" href="static/themes/classic/galleria.classic.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <style>
+    body::after{
+        position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
+        content:url(1%20PANO.JPG);
+    }</style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1><a href="./">photos</a></h1>
+
+      </header>
+
+      <div id="main" role="main">
+<div class="icons">
+  <a id="fullscreen"><img src="static/img/fullscreen.png"
+                          title="Fullscreen" alt="Fullscreen (f)" /></a>
+</div>
+<div id="gallery"></div>
+
+
+
+    <script src="static/jquery-3.3.1.min.js"></script>
+    <script src="static/galleria.min.js"></script>
+    <script src="static/themes/classic/galleria.classic.min.js"></script>
+    <script src="static/plugins/history/galleria.history.min.js"></script>
+    <script>
+    var data = [
+{
+        title: "1 PANO",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e80\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1004\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/29/2014 11:07:10 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/1%20PANO.JPG",
+        image: "1%20PANO.JPG"
+      },
+{
+        title: "2 PANO",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1427\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 9:57:07 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/2%20PANO.JPG",
+        image: "2%20PANO.JPG"
+      },
+{
+        title: "016",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e32\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/383\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.2\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5s\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/29/2014 11:37:33 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/016.JPG",
+        image: "016.JPG"
+      },
+{
+        title: "017",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e32\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/402\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.2\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5s\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/29/2014 11:37:47 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/017.JPG",
+        image: "017.JPG"
+      },
+{
+        title: "018",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e32\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1026\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.2\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5s\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/29/2014 11:39:13 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/018.JPG",
+        image: "018.JPG"
+      },
+{
+        title: "DeadZone",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e100\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1190/1000000\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eNokia Lumia 521\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:15:14 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/DeadZone.jpg",
+        image: "DeadZone.jpg"
+      },
+{
+        title: "dontneednostinkinouthouse",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e100\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1716/1000000\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eNokia Lumia 521\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:18:19 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/dontneednostinkinouthouse.jpg",
+        image: "dontneednostinkinouthouse.jpg"
+      },
+{
+        title: "DXfoodmaven",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e100\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1216/1000000\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eNokia Lumia 521\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:15:07 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/DXfoodmaven.jpg",
+        image: "DXfoodmaven.jpg"
+      },
+{
+        title: "IMG_1194",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/3390\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 9:24:05 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1194.jpg",
+        image: "IMG_1194.jpg"
+      },
+{
+        title: "IMG_1195",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/6024\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 9:24:06 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1195.jpg",
+        image: "IMG_1195.jpg"
+      },
+{
+        title: "IMG_1198",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1642\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 9:24:21 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1198.jpg",
+        image: "IMG_1198.jpg"
+      },
+{
+        title: "IMG_1200",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/536\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 9:45:54 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1200.jpg",
+        image: "IMG_1200.jpg"
+      },
+{
+        title: "IMG_1201",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/874\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 9:46:16 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1201.jpg",
+        image: "IMG_1201.jpg"
+      },
+{
+        title: "IMG_1203",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1063\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 9:56:47 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1203.jpg",
+        image: "IMG_1203.jpg"
+      },
+{
+        title: "IMG_1206",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/733\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 9:57:41 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1206.jpg",
+        image: "IMG_1206.jpg"
+      },
+{
+        title: "IMG_1208",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/686\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 9:58:16 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1208.jpg",
+        image: "IMG_1208.jpg"
+      },
+{
+        title: "IMG_1209",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/968\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 9:58:19 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1209.jpg",
+        image: "IMG_1209.jpg"
+      },
+{
+        title: "IMG_1210",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1550\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 9:58:21 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1210.jpg",
+        image: "IMG_1210.jpg"
+      },
+{
+        title: "IMG_1212",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1106\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:18:55 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1212.jpg",
+        image: "IMG_1212.jpg"
+      },
+{
+        title: "IMG_1215",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1550\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:22:09 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1215.jpg",
+        image: "IMG_1215.jpg"
+      },
+{
+        title: "IMG_1216",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1550\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:22:15 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1216.jpg",
+        image: "IMG_1216.jpg"
+      },
+{
+        title: "IMG_1217",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1427\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:22:18 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1217.jpg",
+        image: "IMG_1217.jpg"
+      },
+{
+        title: "IMG_1218",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1391\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:26:14 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1218.jpg",
+        image: "IMG_1218.jpg"
+      },
+{
+        title: "IMG_1221",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1938\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:30:25 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1221.jpg",
+        image: "IMG_1221.jpg"
+      },
+{
+        title: "IMG_1222",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1550\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:30:28 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1222.jpg",
+        image: "IMG_1222.jpg"
+      },
+{
+        title: "IMG_1224",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/3195\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:30:33 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1224.jpg",
+        image: "IMG_1224.jpg"
+      },
+{
+        title: "IMG_1226",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/2358\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:30:36 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1226.jpg",
+        image: "IMG_1226.jpg"
+      },
+{
+        title: "IMG_1229",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/3012\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:37:27 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1229.jpg",
+        image: "IMG_1229.jpg"
+      },
+{
+        title: "IMG_1231",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/2358\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:37:29 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1231.jpg",
+        image: "IMG_1231.jpg"
+      },
+{
+        title: "IMG_1232",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/2857\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:37:30 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1232.jpg",
+        image: "IMG_1232.jpg"
+      },
+{
+        title: "IMG_1234",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1391\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:59:10 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1234.jpg",
+        image: "IMG_1234.jpg"
+      },
+{
+        title: "IMG_1235",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1178\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 11:02:45 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1235.jpg",
+        image: "IMG_1235.jpg"
+      },
+{
+        title: "IMG_1236",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1323\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 11:19:09 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1236.jpg",
+        image: "IMG_1236.jpg"
+      },
+{
+        title: "IMG_1237",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/2088\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 11:19:12 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1237.jpg",
+        image: "IMG_1237.jpg"
+      },
+{
+        title: "IMG_1238",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1106\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 11:19:14 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1238.jpg",
+        image: "IMG_1238.jpg"
+      },
+{
+        title: "IMG_1240",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/951\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 11:47:50 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1240.jpg",
+        image: "IMG_1240.jpg"
+      },
+{
+        title: "IMG_1242",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1153\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 11:47:57 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1242.jpg",
+        image: "IMG_1242.jpg"
+      },
+{
+        title: "IMG_1244",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/847\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 11:48:11 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1244.jpg",
+        image: "IMG_1244.jpg"
+      },
+{
+        title: "IMG_1246",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/847\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 11:48:18 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1246.jpg",
+        image: "IMG_1246.jpg"
+      },
+{
+        title: "IMG_1248",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1748\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 11:48:31 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1248.jpg",
+        image: "IMG_1248.jpg"
+      },
+{
+        title: "IMG_1251",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1748\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 11:48:39 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1251.jpg",
+        image: "IMG_1251.jpg"
+      },
+{
+        title: "IMG_1254",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1808\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 1:55:47 PM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1254.jpg",
+        image: "IMG_1254.jpg"
+      },
+{
+        title: "IMG_1256",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/6803\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 1:55:51 PM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1256.jpg",
+        image: "IMG_1256.jpg"
+      },
+{
+        title: "IMG_1257",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/7752\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 1:55:54 PM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1257.jpg",
+        image: "IMG_1257.jpg"
+      },
+{
+        title: "IMG_1259",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/6024\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 1:55:56 PM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1259.jpg",
+        image: "IMG_1259.jpg"
+      },
+{
+        title: "IMG_1262",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/384\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 2:00:25 PM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1262.jpg",
+        image: "IMG_1262.jpg"
+      },
+{
+        title: "IMG_1263",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/299\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 2:00:36 PM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1263.jpg",
+        image: "IMG_1263.jpg"
+      },
+{
+        title: "IMG_1266",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/321\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 2:00:45 PM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1266.jpg",
+        image: "IMG_1266.jpg"
+      },
+{
+        title: "IMG_1268",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/232\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 2:01:00 PM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1268.jpg",
+        image: "IMG_1268.jpg"
+      },
+{
+        title: "IMG_1270",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/141\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 2:01:22 PM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1270.jpg",
+        image: "IMG_1270.jpg"
+      },
+{
+        title: "IMG_1271",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/288\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 2:37:34 PM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1271.jpg",
+        image: "IMG_1271.jpg"
+      },
+{
+        title: "IMG_1297",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/985\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/29/2014 10:50:07 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1297.jpg",
+        image: "IMG_1297.jpg"
+      },
+{
+        title: "IMG_1299",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/213\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/29/2014 10:54:38 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1299.jpg",
+        image: "IMG_1299.jpg"
+      },
+{
+        title: "IMG_1302",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/223\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/29/2014 10:54:47 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1302.jpg",
+        image: "IMG_1302.jpg"
+      },
+{
+        title: "IMG_1304",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/155\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/29/2014 10:54:51 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1304.jpg",
+        image: "IMG_1304.jpg"
+      },
+{
+        title: "IMG_1305",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/1323\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/29/2014 10:54:53 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1305.jpg",
+        image: "IMG_1305.jpg"
+      },
+{
+        title: "IMG_1309",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e50\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1/4525\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003cabbr title=\u0027focal length\u0027\u003e4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eApple iPhone 5\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/29/2014 10:54:58 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/IMG_1309.jpg",
+        image: "IMG_1309.jpg"
+      },
+{
+        title: "itstooshort",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e100\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1579/1000000\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eNokia Lumia 521\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:16:22 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/itstooshort.jpg",
+        image: "itstooshort.jpg"
+      },
+{
+        title: "Latrinegoeshere",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e100\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1504/1000000\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eNokia Lumia 521\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:16:30 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/Latrinegoeshere.jpg",
+        image: "Latrinegoeshere.jpg"
+      },
+{
+        title: "purplepassion",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e100\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1623/1000000\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eNokia Lumia 521\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:17:13 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/purplepassion.jpg",
+        image: "purplepassion.jpg"
+      },
+{
+        title: "whatnorig",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e100\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1570/1000000\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eNokia Lumia 521\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:17:36 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/whatnorig.jpg",
+        image: "whatnorig.jpg"
+      },
+{
+        title: "Wheresdabeef",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e100\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1620/1000000\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eNokia Lumia 521\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:15:31 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/Wheresdabeef.jpg",
+        image: "Wheresdabeef.jpg"
+      },
+{
+        title: "WishIwerefishin",
+        description: "\u003cdiv class=\u0027film-meta\u0027\u003e\u003cabbr title=\u0027film speed\u0027\u003e100\u003c/abbr\u003e\u003cabbr title=\u0027exposure\u0027\u003e1391/1000000\u003c/abbr\u003e\u003cabbr title=\u0027aperture\u0027\u003e2.4\u003c/abbr\u003e\u003c/div\u003e\u003cabbr title=\u0027camera make and model\u0027\u003eNokia Lumia 521\u003c/abbr\u003e\u003cabbr title=\u0027date\u0027\u003e6/28/2014 10:16:44 AM\u003c/abbr\u003e",
+        thumb: "thumbnails/WishIwerefishin.jpg",
+        image: "WishIwerefishin.jpg"
+      },
+    ]
+
+    Galleria.ready(function() {
+        /*
+        load thumbnails after gallery setup, and download has started
+        for the main images, but before the loading of map tiles starts
+        in the background. This ensures visible elements are prioritised
+        over non-visible elements
+
+        The choice to lazy load thumbnails in batches of 50 was not made
+        scientifically. Other numbers may yield better performance.
+        */
+        this.lazyLoadChunks( 50 );
+
+        this.attachKeyboard({
+            right: this.next,
+            left: this.prev,
+            /* Toggle fullscreen display on press of 'f' key */
+            0x46: this.toggleFullscreen,
+        });
+
+        var gallery = this;
+        $('#fullscreen').click(function() {
+          gallery.toggleFullscreen();
+        });
+
+        $('.icons').appendTo(this.$('container'));
+    });
+
+    Galleria.configure({
+        imageCrop: false,
+        transition: "fade",
+        thumbnails: "lazy"
+    });
+    Galleria.run("#gallery", {dataSource: data});
+
+    </script>
+      </div>
+<footer>
+  <p>
+    <span>Generated by <a href="https://github.com/saimn/sigal">sigal</a></span>
+  </p>
+</footer>    </div>
+  </body>
+</html>
